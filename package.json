@@ -5,12 +5,19 @@
   "repository": "git@github.com:PauloHFS/cars-api-otterwise.git",
   "author": "Paulo Hernane <paulohernane10@gmail.com>",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
   "devDependencies": {
     "nodemon": "^2.0.15",
     "prisma": "^3.9.1"
   },
   "dependencies": {
     "@prisma/client": "^3.9.1",
-    "fastify": "^3.27.1"
+    "dotenv": "^16.0.0",
+    "fastify": "^3.27.1",
+    "fastify-helmet": "^7.0.1"
   }
 }
