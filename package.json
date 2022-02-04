@@ -1,0 +1,16 @@
+{
+  "name": "cars-api-otterwise",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:PauloHFS/cars-api-otterwise.git",
+  "author": "Paulo Hernane <paulohernane10@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "prisma": "^3.9.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.9.1",
+    "fastify": "^3.27.1"
+  }
+}
