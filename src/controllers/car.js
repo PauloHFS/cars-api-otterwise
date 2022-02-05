@@ -10,7 +10,6 @@ export const index = async (req, reply) => {
   }
 };
 
-// TODO adicionar validação
 export const create = async (req, reply) => {
   const file = req.file;
   const { name, year, brand_id } = req.body;
@@ -44,7 +43,7 @@ export const update = async (req, reply) => {
   }
 
   if (req.body.brand_id) {
-    data.brand = parseInt(req.body.brand_id);
+    data.brand_id = parseInt(req.body.brand_id);
   }
 
   if (req.file) {
@@ -55,6 +54,19 @@ export const update = async (req, reply) => {
     const car = await prisma.car.update({
       where: { id: parseInt(id) },
       data: data,
+    });
+    return reply.status(200).send(car);
+  } catch (error) {
+    console.log(error);
+    reply.status(500).send(error);
+  }
+};
+
+export const remove = async (req, reply) => {
+  const { id } = req.params;
+  try {
+    const car = await prisma.car.delete({
+      where: { id: parseInt(id) },
     });
     return reply.status(200).send(car);
   } catch (error) {

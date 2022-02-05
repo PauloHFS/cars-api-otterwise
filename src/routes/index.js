@@ -51,10 +51,21 @@ const carsRoutes = {
     handler: CarController.create,
   },
   updateCar: {
+    method: 'PUT',
+    url: '/cars/:id',
+    preHandler: upload.single('image'),
+    handler: CarController.update,
+  },
+  updateCarAtribute: {
     method: 'PATCH',
     url: '/cars/:id',
     preHandler: upload.single('image'),
     handler: CarController.update,
+  },
+  deleteCar: {
+    method: 'DELETE',
+    url: '/cars/:id',
+    handler: CarController.remove,
   },
 };
 
