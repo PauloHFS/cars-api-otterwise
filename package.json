@@ -10,6 +10,9 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "devDependencies": {
     "nodemon": "^2.0.15",
     "prisma": "^3.9.1"
