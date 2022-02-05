@@ -11,6 +11,11 @@ const routes = {
     url: '/brands',
     handler: BrandController.create,
   },
+  updateNameBrand: {
+    method: 'PUT',
+    url: '/brands/:id',
+    handler: BrandController.updateName,
+  },
 };
 
 const renderRoutes = Object.values(routes);
