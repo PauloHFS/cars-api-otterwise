@@ -1,4 +1,19 @@
+import multer from 'fastify-multer';
+import path from 'path';
 import * as BrandController from '../controllers/brand.js';
+import * as CarController from '../controllers/car.js';
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images/');
+  },
+  filename: (req, file, cb) => {
+    const extension = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + Date.now() + extension);
+  },
+});
+
+const upload = multer({ storage });
 
 const brandRoutes = {
   showAllBrands: {
@@ -23,7 +38,27 @@ const brandRoutes = {
   },
 };
 
-const routes = { ...brandRoutes };
+const carsRoutes = {
+  showAllCars: {
+    method: 'GET',
+    url: '/cars',
+    handler: CarController.index,
+  },
+  createCars: {
+    method: 'POST',
+    url: '/cars',
+    preHandler: upload.single('image'),
+    handler: CarController.create,
+  },
+  updateCar: {
+    method: 'PATCH',
+    url: '/cars/:id',
+    preHandler: upload.single('image'),
+    handler: CarController.update,
+  },
+};
+
+const routes = { ...brandRoutes, ...carsRoutes };
 
 const renderRoutes = Object.values(routes);
 

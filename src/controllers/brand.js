@@ -28,9 +28,9 @@ export const create = async (req, reply) => {
   }
 };
 
-export const update = async (res, reply) => {
-  const { id } = res.params;
-  const { name } = res.body;
+export const update = async (req, reply) => {
+  const { id } = req.params;
+  const { name } = req.body;
 
   if (!name) return reply.status(400).send('Falta o name!');
 
@@ -46,8 +46,8 @@ export const update = async (res, reply) => {
   }
 };
 
-export const remove = async (res, reply) => {
-  const { id } = res.params;
+export const remove = async (req, reply) => {
+  const { id } = req.params;
 
   try {
     const brand = await prisma.brand.delete({ where: { id: parseInt(id) } });
