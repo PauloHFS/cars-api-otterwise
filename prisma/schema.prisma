@@ -17,9 +17,10 @@ model Brand {
 }
 
 model Car {
-  id       Int    @id @default(autoincrement())
-  name     String @db.VarChar(50)
-  year     String @db.VarChar(50)
-  brand    Brand  @relation(fields: [brand_id], references: [id])
-  brand_id Int
+  id        Int    @id @default(autoincrement())
+  name      String @db.VarChar(50)
+  year      String @db.VarChar(50)
+  brand     Brand  @relation(fields: [brand_id], references: [id])
+  brand_id  Int
+  image_url String
 }
