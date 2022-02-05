@@ -1,6 +1,6 @@
 import * as BrandController from '../controllers/brand.js';
 
-const routes = {
+const brandRoutes = {
   showAllBrands: {
     method: 'GET',
     url: '/brands',
@@ -14,9 +14,16 @@ const routes = {
   updateNameBrand: {
     method: 'PUT',
     url: '/brands/:id',
-    handler: BrandController.updateName,
+    handler: BrandController.update,
+  },
+  deleteBrand: {
+    method: 'DELETE',
+    url: '/brands/:id',
+    handler: BrandController.remove,
   },
 };
+
+const routes = { ...brandRoutes };
 
 const renderRoutes = Object.values(routes);
 

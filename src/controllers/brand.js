@@ -28,7 +28,7 @@ export const create = async (req, reply) => {
   }
 };
 
-export const updateName = async (res, reply) => {
+export const update = async (res, reply) => {
   const { id } = res.params;
   const { name } = res.body;
 
@@ -39,6 +39,18 @@ export const updateName = async (res, reply) => {
       where: { id: parseInt(id) },
       data: { name },
     });
+    return reply.status(200).send(brand);
+  } catch (error) {
+    console.error(error);
+    return reply.status(500).send(error);
+  }
+};
+
+export const remove = async (res, reply) => {
+  const { id } = res.params;
+
+  try {
+    const brand = await prisma.brand.delete({ where: { id: parseInt(id) } });
     return reply.status(200).send(brand);
   } catch (error) {
     console.error(error);
